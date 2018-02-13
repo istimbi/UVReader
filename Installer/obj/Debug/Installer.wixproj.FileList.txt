@@ -1,0 +1,7 @@
+obj\Debug\Product.wixobj
+C:\Users\istimbi\source\repos\UVReader\Installer\bin\Debug\ru-RU\cab1.cab
+C:\Users\istimbi\source\repos\UVReader\Installer\bin\Debug\ru-RU\Installer.msi
+C:\Users\istimbi\source\repos\UVReader\Installer\bin\Debug\ru-RU\Installer.wixpdb
+obj\Debug\Installer.wixproj.BindContentsFileListru-RU.txt
+obj\Debug\Installer.wixproj.BindOutputsFileListru-RU.txt
+obj\Debug\Installer.wixproj.BindBuiltOutputsFileListru-RU.txt

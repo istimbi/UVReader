@@ -1,0 +1,3 @@
+C:\Users\istimbi\source\repos\UVReader\Installer\bin\Debug\ru-RU\cab1.cab
+C:\Users\istimbi\source\repos\UVReader\Installer\bin\Debug\ru-RU\Installer.msi
+C:\Users\istimbi\source\repos\UVReader\Installer\bin\Debug\ru-RU\Installer.wixpdb

@@ -1,0 +1,10 @@
+C:\Users\istimbi\source\repos\UVReader\UVReader\bin\Debug\UVReader.exe.config
+C:\Users\istimbi\source\repos\UVReader\UVReader\bin\Debug\UVReader.exe
+C:\Users\istimbi\source\repos\UVReader\UVReader\bin\Debug\UVReader.pdb
+C:\Users\istimbi\source\repos\UVReader\UVReader\obj\Debug\UVReader.Form1.resources
+C:\Users\istimbi\source\repos\UVReader\UVReader\obj\Debug\UVReader.Properties.Resources.resources
+C:\Users\istimbi\source\repos\UVReader\UVReader\obj\Debug\UVReader.csproj.GenerateResource.Cache
+C:\Users\istimbi\source\repos\UVReader\UVReader\obj\Debug\UVReader.csproj.CoreCompileInputs.cache
+C:\Users\istimbi\source\repos\UVReader\UVReader\obj\Debug\UVReader.exe
+C:\Users\istimbi\source\repos\UVReader\UVReader\obj\Debug\UVReader.pdb
+C:\Users\istimbi\source\repos\UVReader\UVReader\obj\Debug\UVReader.csprojResolveAssemblyReference.cache
