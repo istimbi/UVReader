@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,14 +27,9 @@ namespace UVReader
         NumericUpDown[] pause;
         CheckBox[] ledOff;
         Boolean resultOk = false;
-        List<int[]> counts = new List<int[]>(8);
-        ArrayList s = new ArrayList();
-        String line;
-        int num;
         public Form1()
         {
             InitializeComponent();
-
             for (int i = 0; i < m_PortNames.Length; i++)
             {
                 comboBox1.Items.Add(m_PortNames[i]);
@@ -60,48 +52,18 @@ namespace UVReader
         private void button1_Click(object sender, EventArgs e)
         {
             createList();
-            Thread sendCmd = new Thread(sendCommand);
-            sendCmd.Start();
-        }
 
-        private void sendCommand()
-        {
             foreach (Tube t in tubes)
             {
-                int[] count = new int[8];
                 if (t.Enable)
                 {
-
-                    writeToReader("step " + t.Step);
-                    if (t.Vibro > 0)
-                    {
-                        writeToReader("vibro " + t.Vibro);
-                    }
-                    Thread.Sleep(t.PauseLed * 1000);
-                    writeToReader("gain " + t.Gain);
-                    for (int i = 0; i < t.Num; i++)
-                    {
-                        writeToReader("ledON");
-                        writeToReader("read");
-                        count[i] = num;
-                        Thread.Sleep(t.Pause * 1000);
-                    }
-                    writeToReader("ledOFF");
-                    s.Add(count);
+                    writeToReader("step "+t.Step);  
                 }
             }
-            Thread.Sleep(1);
-            this.Invoke((MethodInvoker)delegate{
-                richTextBox1.SelectionStart = richTextBox1.TextLength;
-                richTextBox1.SelectionLength = 0;
-                richTextBox1.SelectionColor = Color.White;
-                richTextBox1.SelectedText = "Success"+Environment.NewLine;
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size, FontStyle.Bold);
-            });
         }
+
         private void createList()
         {
-            tubes.Clear();
             for (int i = 0; i < 8; i++)
             {
                 tubes.Add(new Tube()
@@ -111,7 +73,6 @@ namespace UVReader
                     Vibro = Convert.ToInt32(vibro[i].Value),
                     PauseLed = Convert.ToInt32(pauseLed[i].Value),
                     Num = Convert.ToInt32(number[i].Value),
-                    Gain =Convert.ToInt32(gain[i].Value),
                     Pause = Convert.ToInt32(pause[i].Value),
                     LedOff = ledOff[i].Checked
                 });
@@ -122,23 +83,14 @@ namespace UVReader
         {
             resultOk = false;
             serialPort.Write(command);
-            this.Invoke((MethodInvoker)delegate
-            {
-                //richTextBox1.Text += command + " ";
-                richTextBox1.AppendText(command + " ");
-                
-            });
             while (!resultOk)
             {
-            Thread.Sleep(100);
+                Thread.Sleep(100);
             }
         }
 
-       
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            richTextBox1.Text = "";
             try
             {
                 serialPort.PortName = comboBox1.SelectedItem.ToString();
@@ -148,7 +100,6 @@ namespace UVReader
                 serialPort.DataReceived += serialPort_DataReceived;
                 com_port.Text = "Подключенно к COM порту";
                 com_port.ForeColor = Color.Green;
-                serialPort.Write("help");
             }
             catch (Exception)
             {
@@ -159,76 +110,12 @@ namespace UVReader
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            Regex regex = new Regex(@"^[0-9]+\r");
-            line = serialPort.ReadLine();
-            MatchCollection c = regex.Matches(line);
-            if (c.Count !=0)
-             {              
-                num = Convert.ToInt32(line);
-            }
+            string line = serialPort.ReadLine();
             if (line.Contains("OK")) resultOk = true;         
             this.Invoke((MethodInvoker)delegate
             {
-                richTextBox1.AppendText(line);
-                richTextBox1.SelectionStart = richTextBox1.Text.Length;
-                richTextBox1.ScrollToCaret();
+                richTextBox1.Text += line;
             });
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-            richTextBox1.Focus();
-            //richTextBox1.SelectionStart = richTextBox1.Text.Length;
-           // richTextBox1.ScrollToCaret();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            StringBuilder csv = new StringBuilder();
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "CSV files (*.csv)|*.csv";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.RestoreDirectory = true;
-            int i = 1;
-            int num = 0;
-            csv.AppendLine("Пробирка; Шаг; Вибрация; Пауза(LED); Количество измерений; Коэффициент усиление; Пауза между измерениями; ");
-            foreach (Tube t in tubes)
-            {
-                if (t.Enable)
-                {
-                    csv.AppendLine(i+";"+t.Step+";"+t.Vibro+";"+t.PauseLed+";"+t.Num+";"+t.Gain+";"+t.Pause);
-                    if (t.Num > num)
-                    {
-                        num = t.Num;
-                    }
-
-                }
-                i++;
-            }
-            csv.AppendLine();
-
-            csv.Append("Измерение ;");
-            for (int z = 1; z < num+1; z++)
-            {
-                csv.Append(z + ";");
-            }
-            csv.AppendLine();
-
-            for (int j = 0; j < s.Count; j++)
-            {
-                int[] a = (int[])s[j];
-                csv.Append(" ;");
-                for (int f = 0; f < num; f++)
-                {                
-                    csv.Append(a[f] + ";");
-                }
-                csv.AppendLine();
-            }
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                File.AppendAllText(saveFileDialog1.FileName,csv.ToString(), Encoding.UTF8);
-                System.Diagnostics.Process.Start(saveFileDialog1.FileName);
-            }
         }
     }
     class Tube
@@ -238,7 +125,6 @@ namespace UVReader
         public int Vibro { get; set; }
         public int PauseLed { get; set; }
         public int Num { get; set; }
-        public int Gain { get; set; }
         public int Pause { get; set; }
         public bool LedOff { get; set; }
 
