@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.com_port = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
@@ -158,6 +160,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gain1)).BeginInit();
@@ -217,6 +225,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.vibro2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.step2)).BeginInit();
             this.groupBox10.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -226,9 +238,9 @@
             this.groupBox1.Controls.Add(this.com_port);
             this.groupBox1.Controls.Add(this.label41);
             this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(3, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(366, 62);
+            this.groupBox1.Size = new System.Drawing.Size(377, 62);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры подключения";
@@ -280,7 +292,7 @@
             this.groupBox3.Controls.Add(this.Prob1);
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(594, 62);
+            this.groupBox3.Size = new System.Drawing.Size(605, 62);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Пробирка 1";
@@ -298,7 +310,7 @@
             // 
             this.gain1.Location = new System.Drawing.Point(364, 30);
             this.gain1.Maximum = new decimal(new int[] {
-            8,
+            5,
             0,
             0,
             0});
@@ -409,12 +421,22 @@
             // 
             // step1
             // 
+            this.step1.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.step1.Location = new System.Drawing.Point(71, 30);
+            this.step1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.step1.Name = "step1";
             this.step1.Size = new System.Drawing.Size(50, 20);
             this.step1.TabIndex = 3;
             this.step1.Value = new decimal(new int[] {
-            10,
+            400,
             0,
             0,
             0});
@@ -454,9 +476,9 @@
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Location = new System.Drawing.Point(12, 80);
+            this.panel1.Location = new System.Drawing.Point(3, 74);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(617, 206);
+            this.panel1.Size = new System.Drawing.Size(628, 269);
             this.panel1.TabIndex = 2;
             // 
             // groupBox11
@@ -479,7 +501,7 @@
             this.groupBox11.Controls.Add(this.Prob8);
             this.groupBox11.Location = new System.Drawing.Point(3, 479);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(594, 62);
+            this.groupBox11.Size = new System.Drawing.Size(605, 62);
             this.groupBox11.TabIndex = 22;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Пробирка 8";
@@ -497,7 +519,7 @@
             // 
             this.gain8.Location = new System.Drawing.Point(364, 30);
             this.gain8.Maximum = new decimal(new int[] {
-            8,
+            5,
             0,
             0,
             0});
@@ -608,7 +630,17 @@
             // 
             // step8
             // 
+            this.step8.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.step8.Location = new System.Drawing.Point(71, 30);
+            this.step8.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.step8.Name = "step8";
             this.step8.Size = new System.Drawing.Size(50, 20);
             this.step8.TabIndex = 3;
@@ -657,7 +689,7 @@
             this.groupBox6.Controls.Add(this.Prob7);
             this.groupBox6.Location = new System.Drawing.Point(3, 411);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(594, 62);
+            this.groupBox6.Size = new System.Drawing.Size(605, 62);
             this.groupBox6.TabIndex = 21;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Пробирка 7";
@@ -675,7 +707,7 @@
             // 
             this.gain7.Location = new System.Drawing.Point(364, 30);
             this.gain7.Maximum = new decimal(new int[] {
-            8,
+            5,
             0,
             0,
             0});
@@ -786,7 +818,17 @@
             // 
             // step7
             // 
+            this.step7.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.step7.Location = new System.Drawing.Point(71, 30);
+            this.step7.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.step7.Name = "step7";
             this.step7.Size = new System.Drawing.Size(50, 20);
             this.step7.TabIndex = 3;
@@ -835,7 +877,7 @@
             this.groupBox8.Controls.Add(this.Prob6);
             this.groupBox8.Location = new System.Drawing.Point(3, 343);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(594, 62);
+            this.groupBox8.Size = new System.Drawing.Size(605, 62);
             this.groupBox8.TabIndex = 20;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Пробирка 6";
@@ -853,7 +895,7 @@
             // 
             this.gain6.Location = new System.Drawing.Point(364, 30);
             this.gain6.Maximum = new decimal(new int[] {
-            8,
+            5,
             0,
             0,
             0});
@@ -964,12 +1006,22 @@
             // 
             // step6
             // 
+            this.step6.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.step6.Location = new System.Drawing.Point(71, 30);
+            this.step6.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.step6.Name = "step6";
             this.step6.Size = new System.Drawing.Size(50, 20);
             this.step6.TabIndex = 3;
             this.step6.Value = new decimal(new int[] {
-            10,
+            400,
             0,
             0,
             0});
@@ -995,8 +1047,6 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.label28);
             this.groupBox7.Controls.Add(this.gain5);
             this.groupBox7.Controls.Add(this.ledOff5);
@@ -1013,7 +1063,7 @@
             this.groupBox7.Controls.Add(this.Prob5);
             this.groupBox7.Location = new System.Drawing.Point(3, 275);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(594, 62);
+            this.groupBox7.Size = new System.Drawing.Size(605, 62);
             this.groupBox7.TabIndex = 19;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Пробирка 5";
@@ -1031,7 +1081,7 @@
             // 
             this.gain5.Location = new System.Drawing.Point(364, 30);
             this.gain5.Maximum = new decimal(new int[] {
-            8,
+            5,
             0,
             0,
             0});
@@ -1142,12 +1192,22 @@
             // 
             // step5
             // 
+            this.step5.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.step5.Location = new System.Drawing.Point(71, 30);
+            this.step5.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.step5.Name = "step5";
             this.step5.Size = new System.Drawing.Size(50, 20);
             this.step5.TabIndex = 3;
             this.step5.Value = new decimal(new int[] {
-            10,
+            400,
             0,
             0,
             0});
@@ -1191,7 +1251,7 @@
             this.groupBox5.Controls.Add(this.Prob4);
             this.groupBox5.Location = new System.Drawing.Point(3, 207);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(594, 62);
+            this.groupBox5.Size = new System.Drawing.Size(605, 62);
             this.groupBox5.TabIndex = 18;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Пробирка 4";
@@ -1209,7 +1269,7 @@
             // 
             this.gain4.Location = new System.Drawing.Point(364, 30);
             this.gain4.Maximum = new decimal(new int[] {
-            8,
+            5,
             0,
             0,
             0});
@@ -1320,7 +1380,17 @@
             // 
             // step4
             // 
+            this.step4.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.step4.Location = new System.Drawing.Point(71, 30);
+            this.step4.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.step4.Name = "step4";
             this.step4.Size = new System.Drawing.Size(50, 20);
             this.step4.TabIndex = 3;
@@ -1369,7 +1439,7 @@
             this.groupBox2.Controls.Add(this.Prob3);
             this.groupBox2.Location = new System.Drawing.Point(3, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(594, 62);
+            this.groupBox2.Size = new System.Drawing.Size(605, 62);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Пробирка 3";
@@ -1387,7 +1457,7 @@
             // 
             this.gain3.Location = new System.Drawing.Point(364, 30);
             this.gain3.Maximum = new decimal(new int[] {
-            8,
+            5,
             0,
             0,
             0});
@@ -1498,7 +1568,17 @@
             // 
             // step3
             // 
+            this.step3.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.step3.Location = new System.Drawing.Point(71, 30);
+            this.step3.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.step3.Name = "step3";
             this.step3.Size = new System.Drawing.Size(50, 20);
             this.step3.TabIndex = 3;
@@ -1547,7 +1627,7 @@
             this.groupBox4.Controls.Add(this.Prob2);
             this.groupBox4.Location = new System.Drawing.Point(3, 71);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(594, 62);
+            this.groupBox4.Size = new System.Drawing.Size(605, 62);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Пробирка 2";
@@ -1565,7 +1645,7 @@
             // 
             this.gain2.Location = new System.Drawing.Point(364, 30);
             this.gain2.Maximum = new decimal(new int[] {
-            8,
+            5,
             0,
             0,
             0});
@@ -1676,12 +1756,22 @@
             // 
             // step2
             // 
+            this.step2.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.step2.Location = new System.Drawing.Point(71, 30);
+            this.step2.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.step2.Name = "step2";
             this.step2.Size = new System.Drawing.Size(50, 20);
             this.step2.TabIndex = 3;
             this.step2.Value = new decimal(new int[] {
-            10,
+            400,
             0,
             0,
             0});
@@ -1709,7 +1799,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.PaleGreen;
-            this.button1.Location = new System.Drawing.Point(393, 26);
+            this.button1.Location = new System.Drawing.Point(395, 20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 41);
             this.button1.TabIndex = 3;
@@ -1721,23 +1811,25 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button2.Location = new System.Drawing.Point(518, 26);
+            this.button2.Location = new System.Drawing.Point(520, 20);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 41);
             this.button2.TabIndex = 4;
             this.button2.Text = "Save to CSV";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(3, 16);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 13);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.richTextBox1.Size = new System.Drawing.Size(611, 142);
+            this.richTextBox1.Size = new System.Drawing.Size(622, 142);
             this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
             // 
             // groupBox10
@@ -1745,23 +1837,109 @@
             this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox10.Controls.Add(this.richTextBox1);
-            this.groupBox10.Location = new System.Drawing.Point(12, 292);
+            this.groupBox10.Location = new System.Drawing.Point(6, 349);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(617, 161);
+            this.groupBox10.Size = new System.Drawing.Size(628, 147);
             this.groupBox10.TabIndex = 6;
             this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Логи";
+            this.groupBox10.Text = "Лог";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(1, 1);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(645, 530);
+            this.tabControl1.TabIndex = 7;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.chart1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(637, 504);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Результаты";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox10);
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.panel1);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(637, 504);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Измерения";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            chartArea3.AxisX.Interval = 1D;
+            chartArea3.AxisX.Title = "Время";
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            chartArea3.AxisX2.Title = "Время";
+            chartArea3.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
+            this.chart1.Name = "chart1";
+            series3.BorderWidth = 3;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.LabelAngle = 1;
+            series3.Legend = "Legend1";
+            series3.MarkerBorderColor = System.Drawing.Color.CornflowerBlue;
+            series3.MarkerBorderWidth = 5;
+            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series3.Name = "Пробирка ";
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(631, 498);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(589, 456);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(27, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = ">";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(556, 456);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(27, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "<";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 459);
-            this.Controls.Add(this.groupBox10);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(644, 532);
+            this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "UVReader";
             this.groupBox1.ResumeLayout(false);
@@ -1832,6 +2010,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.vibro2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.step2)).EndInit();
             this.groupBox10.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1967,6 +2149,12 @@
         private System.Windows.Forms.NumericUpDown step2;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.CheckBox Prob2;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 
